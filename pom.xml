@@ -9,6 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cdk.version>1.122.0</cdk.version>
         <junit.version>5.7.1</junit.version>
+        <slf4j.version>1.7.32</slf4j.version>
     </properties>
     <build>
         <plugins>
@@ -26,7 +27,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>com.myorg.CdkFirstProjectApp</mainClass>
+                    <mainClass>com.pg.s3snssqs.S3SnsSqsProjectApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -39,8 +40,20 @@
             <version>${cdk.version}</version>
         </dependency>
 
-        <!-- Respective AWS Construct Libraries -->
         <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>sqs</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>sns-subscriptions</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <!-- Respective AWS Construct Libraries -->
+       <!-- <dependency>
             <groupId>software.amazon.awscdk</groupId>
             <artifactId>sns</artifactId>
             <version>${cdk.version}</version>
@@ -53,6 +66,57 @@
         <dependency>
             <groupId>software.amazon.awscdk</groupId>
             <artifactId>sqs</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>lambda</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>apigateway</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>dynamodb</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- to find the implementation class for interface in class files-->
+        <dependency>
+            <groupId>org.burningwave</groupId>
+            <artifactId>core</artifactId>
+            <version>12.48.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>s3-notifications</artifactId>
             <version>${cdk.version}</version>
         </dependency>
 
