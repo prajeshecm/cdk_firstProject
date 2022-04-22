@@ -10,6 +10,8 @@ import software.amazon.awscdk.services.sns.Topic;
 import software.amazon.awscdk.services.sns.subscriptions.SqsSubscription;
 import software.amazon.awscdk.services.sqs.Queue;
 
+import java.security.Principal;
+
 public class S3SnsSqsStack extends Stack {
     public S3SnsSqsStack(final Construct parent, final String id) {
         this(parent, id, null);
@@ -44,5 +46,36 @@ public class S3SnsSqsStack extends Stack {
         //Cout the stack topic arn.
         CfnOutputProps cfnOutputProps = CfnOutputProps.builder().value(topic.getTopicArn()).description("topic arn valuess").build();
         CfnOutput CfnOutput = new CfnOutput(this, "snsTopicArn", cfnOutputProps);
+
+  /* please validate the below access policy for SNS       {
+  “Version”: “2008-10-17",
+  “Id”: “__default_policy_ID”,
+  “Statement”: [
+            {
+      “Sid”: “__default_statement_ID”,
+      “Effect”: “Allow”,
+      “Principal”: {
+        “AWS”: “*”
+            },
+      “Action”: [
+        “SNS:GetTopicAttributes”,
+        “SNS:SetTopicAttributes”,
+        “SNS:AddPermission”,
+        “SNS:RemovePermission”,
+        “SNS:DeleteTopic”,
+        “SNS:Subscribe”,
+        “SNS:ListSubscriptionsByTopic”,
+        “SNS:Publish”,
+        “SNS:Receive”
+      ],
+      “Resource”: “arn:aws:sns:us-east-1:716915692812:loaders3bucket”,
+      “Condition”: {
+        “ArnLike”: {
+          “AWS:SourceArn”: “arn:aws:s3:::loaders3bucket”
+                }
+            }
+            }
+  ]
+        }*/
     }
 }
